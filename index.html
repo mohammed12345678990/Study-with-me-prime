@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study with me</title>
+    <style>
+        body {
+            background-color: #2c3e50; /* لون أزرق داكن */
+            color: white; /* لون النص */
+            font-family: Arial, sans-serif; /* خط الصفحة */
+            overflow: hidden; /* إخفاء التمرير */
+            position: relative; /* لضبط موضع العناصر */
+        }
+        .icon {
+            position: absolute;
+            width: 50px; /* عرض الأيقونة */
+            height: 50px; /* ارتفاع الأيقونة */
+            opacity: 0.7; /* شفافية */
+        }
+        .moving-text {
+            position: absolute;
+            font-size: 48px; /* حجم الخط */
+            white-space: nowrap; /* عدم التفاف النص */
+            animation: move 5s linear infinite; /* إضافة حركة */
+            left: 50%; /* محاذاة للنصف */
+            transform: translateX(-50%); /* تحريك لليسار للتوسيع الكامل */
+            top: 300px; /* محاذاة عمودية تحت 300 بكسل */
+        }
+        @keyframes move {
+            0% { transform: translate(-50%, -50%) translateX(100%); }
+            100% { transform: translate(-50%, -50%) translateX(-100%); }
+        }
+        #loginForm {
+            display: none; /* إخفاء نموذج تسجيل الدخول بشكل افتراضي */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2c3e50; /* لون أزرق داكن */
+            position: absolute; /* لضبط النموذج في منتصف الشاشة */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="moving-text">STUDY WITH ME</div>
+    <form id="loginForm">
+        <input type="text" placeholder="اسم المستخدم" required>
+        <input type="password" placeholder="كلمة المرور" required>
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+
+    <script>
+        const icons = ['➕', '➖', '✖️', '➗']; // رموز العمليات الحسابية
+        const numberOfIcons = 20; // عدد الأيقونات
+
+        for (let i = 0; i < numberOfIcons; i++) {
+            const iconElement = document.createElement('div');
+            iconElement.className = 'icon';
+            iconElement.textContent = icons[Math.floor(Math.random() * icons.length)];
+            document.body.appendChild(iconElement);
+
+            // تحريك الأيقونة في موضع عشوائي
+            iconElement.style.left = Math.random() * window.innerWidth + 'px';
+            iconElement.style.top = Math.random() * window.innerHeight + 'px';
+
+            // إضافة حركة
+            const animateIcon = () => {
+                const randomX = (Math.random() - 0.5) * 100; // تحريك أفقي
+                const randomY = (Math.random() - 0.5) * 100; // تحريك عمودي
+
+                iconElement.style.transform = `translate(${randomX}px, ${randomY}px)`;
+                requestAnimationFrame(animateIcon);
+            };
+            animateIcon();
+        }
+
+        // فتح صفحة تسجيل الدخول بعد 5 ثواني
+        setTimeout(() => {
+            document.querySelector('.moving-text').style.display = 'none'; // إخفاء النص المتحرك
+            document.getElementById('loginForm').style.display = 'flex'; // عرض نموذج تسجيل الدخول
+        }, 5000);
+
+        // تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+            window.location.href = 'home.html'; // الانتقال إلى home.html بعد تسجيل الدخول
+        });
+    </script>
+</body>
+</html>

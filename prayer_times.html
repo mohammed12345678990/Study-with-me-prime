@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study with me</title>
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: white;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prayer Times</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Fajr</th>
+                <th>Dhuhr</th>
+                <th>Asr</th>
+                <th>Maghrib</th>
+                <th>Isha</th>
+                <th>Set Reminder</th>
+            </tr>
+        </thead>
+        <tbody id="prayerTimes">
+            <tr>
+                <td>Saudi Arabia</td>
+                <td>5:00 AM</td>
+                <td>12:15 PM</td>
+                <td>3:30 PM</td>
+                <td>6:00 PM</td>
+                <td>7:30 PM</td>
+                <td><button onclick="setReminder('5:00 AM')">Set</button></td>
+            </tr>
+            <tr>
+                <td>Egypt</td>
+                <td>4:45 AM</td>
+                <td>12:00 PM</td>
+                <td>3:15 PM</td>
+                <td>5:45 PM</td>
+                <td>7:00 PM</td>
+                <td><button onclick="setReminder('4:45 AM')">Set</button></td>
+            </tr>
+            <tr>
+                <td>Turkey</td>
+                <td>5:10 AM</td>
+                <td>12:30 PM</td>
+                <td>3:40 PM</td>
+                <td>6:15 PM</td>
+                <td>7:45 PM</td>
+                <td><button onclick="setReminder('5:10 AM')">Set</button></td>
+            </tr>
+            <tr>
+                <td>Jordan</td>
+                <td>5:05 AM</td>
+                <td>12:20 PM</td>
+                <td>3:25 PM</td>
+                <td>6:05 PM</td>
+                <td>7:35 PM</td>
+                <td><button onclick="setReminder('5:05 AM')">Set</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function setReminder(time) {
+            alert(`Reminder set for ${time}.`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study with me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1e1e2f;
+            color: white;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .day-container {
+            margin-top: 20px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #2a2a3b;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Evaluation</h1>
+
+    <div class="day-container">
+        <h2>Evaluate Your Week</h2>
+        <button id="submitEvaluation">Show Evaluation</button>
+        <table id="evaluationTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Completed Tasks</th>
+                    <th>Total Tasks</th>
+                    <th>Completion Rate (%)</th>
+                    <th>Errors</th>
+                </tr>
+            </thead>
+            <tbody id="dataEntries"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample data based on previous entries
+        const dailyData = [
+            { day: "Sunday", totalTasks: 10, completedTasks: 8, errors: 2 },
+            { day: "Monday", totalTasks: 8, completedTasks: 6, errors: 1 },
+            { day: "Tuesday", totalTasks: 12, completedTasks: 10, errors: 3 },
+            { day: "Wednesday", totalTasks: 9, completedTasks: 7, errors: 4 },
+            { day: "Thursday", totalTasks: 11, completedTasks: 9, errors: 2 },
+            { day: "Friday", totalTasks: 10, completedTasks: 10, errors: 0 },
+            { day: "Saturday", totalTasks: 5, completedTasks: 4, errors: 1 },
+        ];
+
+        document.getElementById("submitEvaluation").addEventListener("click", function() {
+            const dataEntriesDiv = document.getElementById("dataEntries");
+            dataEntriesDiv.innerHTML = ''; // Clear previous entries
+            const evaluationTable = document.getElementById("evaluationTable");
+            evaluationTable.style.display = 'table'; // Show the table
+
+            dailyData.forEach(data => {
+                const completionRate = ((data.completedTasks / data.totalTasks) * 100).toFixed(2);
+                const feedbackEntry = document.createElement("tr");
+                feedbackEntry.innerHTML = `
+                    <td>${data.day}</td>
+                    <td>${data.completedTasks}</td>
+                    <td>${data.totalTasks}</td>
+                    <td>${completionRate}</td>
+                    <td>${data.errors}</td>
+                `;
+                dataEntriesDiv.appendChild(feedbackEntry);
+            });
+        });
+    </script>
+</body>
+</html>
